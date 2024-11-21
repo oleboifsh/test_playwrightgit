@@ -19,4 +19,5 @@ export class LoginPage {
         await this.passwordInput.fill(password)
         await this.submitButton.click()
     }
+    
 }
