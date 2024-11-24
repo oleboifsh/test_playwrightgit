@@ -13,7 +13,7 @@ test.beforeAll('Setup api context', async ()=> {
     })
 })
 
-test.only('Student page interactions', async ({ page }) => {
+test('Student page interactions', async ({ page }) => {
 
     const studentPage = new StudentPage(page);
  
