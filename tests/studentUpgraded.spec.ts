@@ -11,6 +11,7 @@ test.beforeAll('Setup api context', async ()=> {
             'content-type': 'application/json'
         }
     })
+    await apiContext.delete("/student_delete_all");
 })
 
 test('Student page interactions', async ({ page }) => {

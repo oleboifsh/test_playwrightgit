@@ -11,7 +11,7 @@ test.beforeAll('Setup api context', async ()=> {
     })
 })
 
-test('Create a student using API', async ()=> {
+/* test('Create a student using API', async ()=> {
     const student = {
         age: '13',
         grade: 'A', 
@@ -29,6 +29,36 @@ test('Create a student using API', async ()=> {
 
     //Check expected age
     expect(responseGetJson.age).toBe(student.age)
+}) */
+
+const testList = [
+    {age: "100", name: "Anna", grade: "B"},
+    {age: "12", name: "Olga", grade: "C"},
+    {age: "34", name: "Daniel", grade: "A+"},
+]
+testList.forEach(({age, name, grade }) => {
+    test.only(`Create a student using API with parametrization: ${name}`, async ()=> {
+        const student = {
+            age: age,
+            grade: name, 
+            name: grade
+            }
+            console.log(age, name, grade)
+        //Create a new student using POST
+        const response = await apiContext.post("/student", {data: student} )
+        const responsejson = await response.json()
+        console.log(`response ${responsejson}`)
+        const studentId = responsejson.student_id
+    
+        //Get newly added student using GET
+        const responseGet = await apiContext.get(`/student/${studentId}`)
+        const responseGetJson = await responseGet.json()
+    
+        //Check expected age
+        expect(responseGetJson.age).toBe(student.age)
+    })
+
+
 })
 
 

@@ -10,5 +10,5 @@ test('Login with Markus', async ({page}) => {
     if (process.env.PASSWORD !== undefined) {
         password = process.env.PASSWORD
     }
-    await loginPage.login("Markus", password)
+    await loginPage.login("Markus", password, "business")
 });
