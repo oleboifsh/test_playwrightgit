@@ -7,7 +7,7 @@ const testList = [
     {age: "34", name: "Daniel", grade: "A+"},
 ]
 testList.forEach(({age, name, grade }) => {
-    test.only(`Create a student using API with parametrizationandfixtures: ${name}`, async ({apiContext})=> {
+    test(`Create a student using API with parametrizationandfixtures: ${name}`, async ({apiContext})=> {
         const student = {
             age: age,
             grade: name, 
@@ -27,8 +27,6 @@ testList.forEach(({age, name, grade }) => {
         //Check expected age
         expect(responseGetJson.age).toBe(student.age)
     })
-
-
 })
 
 
